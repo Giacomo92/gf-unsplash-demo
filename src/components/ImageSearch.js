@@ -10,19 +10,20 @@ const ImageSearch = () => {
   const [currentPage, setCurrentPage] = useState(1);
   const [error, setError] = useState('');
 
-  const searchImages = useCallback(async (page = 1, isRandom = false) => {
-    if (keyword === null && !isRandom) {
+  const searchImages = useCallback(async (page = 1, isRandom = false, keyword) => {
+    console.log(keyword)
+    if (!keyword && !isRandom) {
       setError('Per favore inserisci una parola chiave per la ricerca');
       return;
     }
     try {
       const count = 12;
       const per_page = 12;
-      const url = isRandom ? `${process.env.UNSPLASH_BASE_URL}photos/random` : `${process.env.UNSPLASH_BASE_URL}search/photos`;
+      const url = isRandom ? `${process.env.GATSBY_UNSPLASH_BASE_URL}photos/random` : `${process.env.GATSBY_UNSPLASH_BASE_URL}search/photos`;
       const response = await axios.get(url, {
         params: { query: keyword, page, count, per_page },
         headers: {
-          Authorization: `Client-ID ${process.env.UNSPLASH_ACCESS_KEY}`,
+          Authorization: `Client-ID ${process.env.GATSBY_UNSPLASH_ACCESS_KEY}`,
         },
       });
       const result = isRandom ? response.data :  response.data.results;
@@ -40,13 +41,14 @@ const ImageSearch = () => {
   }, []);
 
   useEffect(() => {
-    searchImages(currentPage, true);
+    searchImages(currentPage, true, keyword);
   }, [currentPage, searchImages]);
 
 
   const handleKeyPress = (event) => {
     if (event.key === 'Enter') {
-      searchImages(currentPage, false);
+      console.log(keyword)
+      searchImages(currentPage, false, keyword);
     }
   };
 
@@ -65,7 +67,7 @@ const ImageSearch = () => {
             value={keyword}
             onKeyDown={handleKeyPress}
           />
-          <Button onClick={() =>  searchImages(currentPage, false)}
+          <Button onClick={() =>  searchImages(currentPage, false, keyword)}
                   variant="outline-secondary" id="search-button">
             Cerca
           </Button>

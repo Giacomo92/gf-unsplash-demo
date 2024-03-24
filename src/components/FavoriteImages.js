@@ -17,7 +17,7 @@ const ImageSearch = () => {
       const imageDetails = await Promise.all(nextImages.map(image =>
         axios.get(`${process.env.UNSPLASH_BASE_URL}photos/${image.id}`, {
           headers: {
-            Authorization: `Client-ID ${process.env.UNSPLASH_ACCESS_KEY}`,
+            Authorization: `Client-ID ${process.env.GATSBY_UNSPLASH_ACCESS_KEY}`,
           },
         }).then(res => res.data)
       ));

@@ -31,7 +31,7 @@ const ImagePage = ({ params }) => {
         const url = `${process.env.UNSPLASH_BASE_URL}/photos/${slug}`;
         const response = await axios.get(url, {
           headers: {
-            Authorization: `Client-ID ${process.env.UNSPLASH_ACCESS_KEY}`,
+            Authorization: `Client-ID ${process.env.GATSBY_UNSPLASH_ACCESS_KEY}`,
           },
         });
         setImage(response.data);
@@ -67,7 +67,7 @@ const ImagePage = ({ params }) => {
               shortname='example'
               config={
                 {
-                  url: `${process.env.BASE_URL}/immagini/${image.slug}`,
+                  url: `${process.env.GATSBY_BASE_URL}/immagini/${image.slug}`,
                   identifier: image.id,
                   title: image.alt_description,
                   language: 'it_IT'
