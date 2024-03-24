@@ -5,7 +5,6 @@ import Col from 'react-bootstrap/Col';
 
 import Layout from "../components/layout"
 import Seo from "../components/seo"
-import 'bootstrap/dist/css/bootstrap.min.css';
 import ImageSearch from "../components/ImageSearch";
 import * as styles from "../components/index.module.css"
 
