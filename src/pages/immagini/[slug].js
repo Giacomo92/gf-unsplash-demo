@@ -28,7 +28,7 @@ const ImagePage = ({ params }) => {
   useEffect(() => {
     const fetchImage = async () => {
       try {
-        const url = `${process.env.UNSPLASH_BASE_URL}/photos/${slug}`;
+        const url = `${process.env.GATSBY_UNSPLASH_BASE_URL}/photos/${slug}`;
         const response = await axios.get(url, {
           headers: {
             Authorization: `Client-ID ${process.env.GATSBY_UNSPLASH_ACCESS_KEY}`,
