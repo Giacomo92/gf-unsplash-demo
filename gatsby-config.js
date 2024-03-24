@@ -15,9 +15,9 @@ require("dotenv").config({
 module.exports = {
   siteMetadata: {
     title: `Unsplash Demo Homepage`,
-    description: `Kick off your next, great Gatsby project with this default starter. This barebones starter ships with the main Gatsby configuration files you might need.`,
-    author: `@gatsbyjs`,
-    siteUrl: `https://gatsbystarterdefaultsource.gatsbyjs.io/`,
+    description: `A simple website with Unsplash images`,
+    author: `@Giacomo92`,
+    siteUrl: `https://gf-unsplash-demo.netlify.app/`,
   },
   plugins: [
     `gatsby-plugin-image`,
