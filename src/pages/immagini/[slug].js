@@ -2,6 +2,7 @@ import * as React from "react"
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Breadcrumb from 'react-bootstrap/Breadcrumb';
+import { useLocation } from 'react-router-dom';
 
 import Layout from "../../components/layout"
 import Seo from "../../components/seo"
@@ -44,11 +45,19 @@ const ImagePage = ({ params }) => {
       fetchImage();
     }
   }, [slug]);
+
+  const fullUrl = typeof window !== 'undefined' ? `${window.location.origin}${location.pathname}` : '';
+
   return (
     <Layout>
       <Row>
         <Col>
           <div className={styles.textCenter}>
+
+            <h1 className="my-5">
+              {capitalizeFirstLetter(image.alt_description)}
+            </h1>
+
             <Breadcrumb>
               <Breadcrumb.Item href="/">Home</Breadcrumb.Item>
               <Breadcrumb.Item href="#">
@@ -56,13 +65,13 @@ const ImagePage = ({ params }) => {
               </Breadcrumb.Item>
               <Breadcrumb.Item active>{capitalizeFirstLetter(image.alt_description)}</Breadcrumb.Item>
             </Breadcrumb>
-            <h1>{capitalizeFirstLetter(image.alt_description)}</h1>
+
             <ImageDetail image={image}/>
             <DiscussionEmbed
               shortname='example'
               config={
                 {
-                  url: window.location.href,
+                  url: fullUrl,
                   identifier: image.id,
                   title: image.alt_description,
                   language: 'it_IT'
