@@ -47,7 +47,6 @@ const ImageSearch = () => {
 
   const handleKeyPress = (event) => {
     if (event.key === 'Enter') {
-      console.log(keyword)
       searchImages(currentPage, false, keyword);
     }
   };
