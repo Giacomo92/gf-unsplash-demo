@@ -6,7 +6,7 @@ import Nav from "react-bootstrap/Nav";
 const Header = ({ siteTitle }) => (
   <Navbar expand="lg" className="bg-body-tertiary">
     <Container>
-      <Navbar.Brand href="#home">Unsplash Demo</Navbar.Brand>
+      <Navbar.Brand href="/">Unsplash Demo</Navbar.Brand>
       <Navbar.Toggle aria-controls="basic-navbar-nav" />
       <Navbar.Collapse id="basic-navbar-nav">
         <Nav className="me-auto">
