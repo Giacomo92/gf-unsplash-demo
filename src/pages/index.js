@@ -22,7 +22,7 @@ const IndexPage = () => (
             alt="Gatsby"
             style={{ marginBottom: `var(--space-3)` }}
           />
-          <h1>
+          <h1 className="my-5">
             Welcome to <b>Unsplash Demo Homepage!</b>
           </h1>
         </div>

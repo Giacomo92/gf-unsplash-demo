@@ -13,7 +13,7 @@ const IndexPage = () => (
     <Row>
       <Col>
         <div className={styles.textCenter}>
-          <h1 className='m-20'>
+          <h1 className="my-5">
            Le mie immagini preferite
           </h1>
         </div>
