@@ -33,6 +33,10 @@ const ImageSearch = () => {
     fetchFavoriteImages();
   }, []);
 
+  if (favoriteImages.length === 0) {
+    return <p>Nessuna immagine trovata tra i preferiti.</p>;
+  }
+  
   return (
     <div>
       <ImageGallery isFavorite={true} images={images} />
