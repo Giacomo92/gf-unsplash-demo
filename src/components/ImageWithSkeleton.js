@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React, {useState} from 'react';
 
 const ImageWithSkeleton = ({ src, alt, srcSet, sizes }) => {
   const [isLoaded, setIsLoaded] = useState(false);

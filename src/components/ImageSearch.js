@@ -11,15 +11,16 @@ const ImageSearch = () => {
   const [error, setError] = useState('');
 
   const searchImages = useCallback(async (page = 1, isRandom = false) => {
-    if (!keyword && !isRandom) {
+    if (keyword === null && !isRandom) {
       setError('Per favore inserisci una parola chiave per la ricerca');
       return;
     }
     try {
-      const count = 10;
+      const count = 12;
+      const per_page = 12;
       const url = isRandom ? `${process.env.UNSPLASH_BASE_URL}photos/random` : `${process.env.UNSPLASH_BASE_URL}search/photos`;
       const response = await axios.get(url, {
-        params: { query: keyword, page, count },
+        params: { query: keyword, page, count, per_page },
         headers: {
           Authorization: `Client-ID ${process.env.UNSPLASH_ACCESS_KEY}`,
         },
@@ -36,7 +37,7 @@ const ImageSearch = () => {
       setError('Si è verificato un errore durante la ricerca delle immagini.');
       console.error(error);
     }
-  }, [keyword]);
+  }, []);
 
   useEffect(() => {
     searchImages(currentPage, true);
@@ -45,7 +46,7 @@ const ImageSearch = () => {
 
   const handleKeyPress = (event) => {
     if (event.key === 'Enter') {
-      searchImages();
+      searchImages(currentPage, false);
     }
   };
 
@@ -64,7 +65,7 @@ const ImageSearch = () => {
             value={keyword}
             onKeyDown={handleKeyPress}
           />
-          <Button onClick={() => searchImages()}
+          <Button onClick={() =>  searchImages(currentPage, false)}
                   variant="outline-secondary" id="search-button">
             Cerca
           </Button>

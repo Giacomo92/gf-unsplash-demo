@@ -31,7 +31,7 @@ const ImageSearch = () => {
 
   useEffect(() => {
     fetchFavoriteImages();
-  });
+  }, []);
 
   return (
     <div>

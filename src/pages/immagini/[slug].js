@@ -50,7 +50,7 @@ const ImagePage = ({ params }) => {
         <Col>
           <div className={styles.textCenter}>
 
-            <h1 class="my-5">
+            <h1 className="my-5">
               {capitalizeFirstLetter(image.alt_description)}
             </h1>
 
