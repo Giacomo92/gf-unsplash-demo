@@ -6,22 +6,37 @@ import Breadcrumb from 'react-bootstrap/Breadcrumb';
 import Layout from "../../components/layout"
 import Seo from "../../components/seo"
 import * as styles from "../../components/index.module.css"
-import ImageDetail from "../../components/ImageDetail";
 import {useEffect, useState} from "react";
 import axios from "axios";
 import {DiscussionEmbed} from "disqus-react";
+import ImageWithSkeleton from "../../components/ImageWithSkeleton";
+import ImageDetails from "../../components/ImageDetails";
 
 function capitalizeFirstLetter(string) {
   if (!string) return '';
   return string.charAt(0).toUpperCase() + string.slice(1);
 }
 
-const ImagePage = ({ params }) => {
-  const { slug } = params;
+const ImagePage = ({params}) => {
+  const {slug} = params;
   const [image, setImage] = useState({
-    'urls' : {regular : ''},
-    'id' : '',
-    'alt_description' : '',
+    'urls': {regular: ''},
+    'id': '',
+    'alt_description': '',
+    'user' : {name: ''},
+    'likes': 0,
+    'downloads': 0,
+    'views': 0,
+    'tags': [],
+    'created_at': '',
+    'updated_at': '',
+    'links': {self: ''},
+    'slug': '',
+    'width': 0,
+    'height': 0,
+    'color': '',
+    'location': {name: '', position:{latitude: '', longitude: ''}},
+    'exif': {make: '', model: ''}
   });
 
 
@@ -57,12 +72,23 @@ const ImagePage = ({ params }) => {
             <Breadcrumb>
               <Breadcrumb.Item href="/">Home</Breadcrumb.Item>
               <Breadcrumb.Item href="#">
-                Images
+                Immagini
               </Breadcrumb.Item>
               <Breadcrumb.Item active>{capitalizeFirstLetter(image.alt_description)}</Breadcrumb.Item>
             </Breadcrumb>
-
-            <ImageDetail image={image}/>
+            <ImageDetails image={image}/>
+            <ImageWithSkeleton
+              srcSet={`
+                ${image.urls.raw}&w=400 400w,
+                ${image.urls.raw}&w=800 800w,
+                ${image.urls.raw}&w=1200 1200w
+              `}
+              sizes={`(max-width: 400px) 400px,
+              (max-width: 800px) 800px,
+              1200px`}
+              src={image.urls.regular}
+              alt={image.alt_description}
+              image={image}/>
             <DiscussionEmbed
               shortname='example'
               config={
@@ -86,6 +112,6 @@ const ImagePage = ({ params }) => {
  *
  * See: https://www.gatsbyjs.com/docs/reference/built-in-components/gatsby-head/
  */
-export const Head = () => <Seo title="Immagine" />
+export const Head = () => <Seo title="Immagine"/>
 
 export default ImagePage
