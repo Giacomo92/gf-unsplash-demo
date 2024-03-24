@@ -1,10 +1,22 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
+import ImageWithSkeleton from "./ImageWithSkeleton";
 
 
-const UnsplashImage = ({ image }) => {
+const ImageDetail = ({ image }) => {
   return (
-    <img src={image.urls.regular} alt="Immagine da Unsplash" />
+    <ImageWithSkeleton
+      srcSet={`
+        ${image.urls.raw}&w=400 400w,
+        ${image.urls.raw}&w=800 800w,
+        ${image.urls.raw}&w=1200 1200w
+      `}
+      sizes={`(max-width: 400px) 400px,
+              (max-width: 800px) 800px,
+              1200px`}
+      src={image.urls.regular}
+      alt={image.alt_description}
+      image={image}/>
   );
 };
 
-export default UnsplashImage;
+export default ImageDetail;
