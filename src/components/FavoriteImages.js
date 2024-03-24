@@ -15,7 +15,7 @@ const ImageSearch = () => {
     const nextImages = favoriteIds.slice(currentIndex, currentIndex + 10);
     try {
       const imageDetails = await Promise.all(nextImages.map(image =>
-        axios.get(`${process.env.UNSPLASH_BASE_URL}photos/${image.id}`, {
+        axios.get(`${process.env.GATSBY_UNSPLASH_BASE_URL}photos/${image.id}`, {
           headers: {
             Authorization: `Client-ID ${process.env.GATSBY_UNSPLASH_ACCESS_KEY}`,
           },
@@ -33,10 +33,10 @@ const ImageSearch = () => {
     fetchFavoriteImages();
   }, []);
 
-  if (favoriteImages.length === 0) {
+  if (images.length === 0) {
     return <p>Nessuna immagine trovata tra i preferiti.</p>;
   }
-  
+
   return (
     <div>
       <ImageGallery isFavorite={true} images={images} />
