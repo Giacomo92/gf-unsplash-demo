@@ -2,7 +2,6 @@ import * as React from "react"
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Breadcrumb from 'react-bootstrap/Breadcrumb';
-import { useLocation } from 'react-router-dom';
 
 import Layout from "../../components/layout"
 import Seo from "../../components/seo"
@@ -45,16 +44,13 @@ const ImagePage = ({ params }) => {
       fetchImage();
     }
   }, [slug]);
-
-  const fullUrl = typeof window !== 'undefined' ? `${window.location.origin}${location.pathname}` : '';
-
   return (
     <Layout>
       <Row>
         <Col>
           <div className={styles.textCenter}>
 
-            <h1 className="my-5">
+            <h1 class="my-5">
               {capitalizeFirstLetter(image.alt_description)}
             </h1>
 
@@ -71,7 +67,7 @@ const ImagePage = ({ params }) => {
               shortname='example'
               config={
                 {
-                  url: fullUrl,
+                  url: `${process.env.BASE_URL}/immagini/${image.slug}`,
                   identifier: image.id,
                   title: image.alt_description,
                   language: 'it_IT'
