@@ -1,11 +1,12 @@
 {
-  "name": "gatsby-starter-default",
+  "name": "gf-unsplash-demo",
   "private": true,
-  "description": "A simple starter to get up and developing quickly with Gatsby",
+  "description": "A simple website with Unsplash images",
   "version": "0.1.0",
-  "author": "Kyle Mathews <mathews.kyle@gmail.com>",
+  "author": "Giacomo Fabbian <giacomo@offlineagency.it>",
   "dependencies": {
     "bootstrap": "^5.3.3",
+    "disqus-react": "^1.1.5",
     "dotenv": "^16.4.5",
     "gatsby": "^5.13.3",
     "gatsby-plugin-image": "^3.13.1",
@@ -16,6 +17,7 @@
     "react": "^18.2.0",
     "react-bootstrap": "^2.10.2",
     "react-dom": "^18.2.0",
+    "react-heart": "^1.0.6",
     "react-responsive-masonry": "^2.2.0"
   },
   "devDependencies": {
