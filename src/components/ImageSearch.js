@@ -35,9 +35,9 @@ const ImageSearch = () => {
       }
       setError('');
     } catch (error) {
-      setError('Si è verificato un errore durante la ricerca delle immagini.');
+      setError('Il servizio API di Unsplash è momentaneamente non disponibile. Riprova fra qualche minuto.');
       console.error(error);
-    }
+     }
   }, []);
 
   useEffect(() => {
