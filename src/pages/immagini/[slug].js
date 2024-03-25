@@ -90,6 +90,7 @@ const ImagePage = ({params}) => {
               alt={image.alt_description}
               image={image}/>
             <DiscussionEmbed
+              className="mt-5"
               shortname='example'
               config={
                 {

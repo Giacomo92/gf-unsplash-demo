@@ -5,7 +5,6 @@ import { Row, Col } from 'react-bootstrap';
 const ImageDetails = ({ image }) => {
   return (
             <div className="mb-4 shadow-sm">
-              <h2>Dettaglio</h2>
               <Row>
                 <Col md={6}>
                   <p><strong>ID:</strong> {image.id}</p>

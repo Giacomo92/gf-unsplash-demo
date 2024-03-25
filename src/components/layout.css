@@ -255,3 +255,16 @@ pre tt:after {
   background: linear-gradient(to right, #eeeeee 8%, #dddddd 18%, #eeeeee 33%);
   background-size: 80rem 100%;
 }
+
+/* Navbar */
+
+.navbar-toggler:focus
+{
+  box-shadow: none !important;
+}
+
+/* Form Control */
+.form-control:focus
+{
+  box-shadow: none !important;
+}

@@ -20,6 +20,7 @@ const IndexPage = () => (
             quality={95}
             formats={["auto", "webp"]}
             alt="Gatsby"
+            className="mt-5"
             style={{ marginBottom: `var(--space-3)` }}
           />
           <h1 className="my-5">

@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react';
-import Masonry from "react-responsive-masonry";
+import Masonry, {ResponsiveMasonry} from "react-responsive-masonry";
 import Heart from "react-heart";
 import ImageWithSkeleton from "./ImageWithSkeleton";
 
@@ -31,7 +31,11 @@ const ImageGallery = ({isFavorite, images}) => {
   };
 
   return (
-    <Masonry columnsCount={4} gutter="10px">
+    <ResponsiveMasonry
+      columnsCountBreakPoints={{350: 1, 750: 2, 900: 3}}
+    >
+    <Masonry
+      columnsCount={4} gutter="10px">
       {images.map((image, i) => (
         <div key={i} style={{ position: 'relative', display: 'inline-block' }}>
           <a href={"/immagini/" + image.slug} style={{ display: 'block' }}>
@@ -70,6 +74,7 @@ const ImageGallery = ({isFavorite, images}) => {
 
             ))}
           </Masonry>
+    </ResponsiveMasonry>
           );
           };
 
